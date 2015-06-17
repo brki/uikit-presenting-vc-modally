@@ -19,6 +19,12 @@ class RockPaperScissorsModel {
     */
     lazy var resultMap: Dictionary<Set<RockPaperScissors>, String> = self.initResultMap()
 
+    let winnerMap = [
+        "rock-paper": RockPaperScissors.Paper,
+        "rock-scissors": RockPaperScissors.Rock,
+        "paper-scissors": RockPaperScissors.Scissors,
+    ]
+
     /**
     This clumsy-looking building of the resultMap is necessary because Swift 1.2
     fails miserably when trying to create it with a simple single declaration.
@@ -42,13 +48,23 @@ class RockPaperScissorsModel {
     }
 
     /**
-    Returns a string that represents the game outcome, e.g. one of
-     - "tie"
-     - "rock-paper"
-     - "rock-scissors"
-     - "paper-scissors"
+    Returns a tuple (``result``, ``playerWon``)
+    ``result`` is a string that represents the game outcome, e.g. one of
+         - "tie"
+         - "rock-paper"
+         - "rock-scissors"
+         - "paper-scissors"
+    ``playerWon`` is true if player won, false if player lost, and nil if it was a tie
     */
-    func resultForOptions(#byPlayer: RockPaperScissors, byComputer: RockPaperScissors) -> String {
-        return resultMap[Set([byPlayer, byComputer])]!
+    func resultForOptions(#byPlayer: RockPaperScissors, byComputer: RockPaperScissors) -> (String, Bool?) {
+        let result = resultMap[Set([byPlayer, byComputer])]!
+
+        var playerWon: Bool?
+        if let winner = winnerMap[result] {
+            playerWon = winner == byPlayer
+        } else {
+            playerWon = nil
+        }
+        return (result, playerWon)
     }
 }

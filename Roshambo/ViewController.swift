@@ -25,9 +25,9 @@ class ViewController: UIViewController {
     and presents results controller modally.
     */
     @IBAction func rock(sender: UIButton) {
-        let resultsController =  self.storyboard?.instantiateViewControllerWithIdentifier("results") as! ResultViewController
-        resultsController.resultImage = playRockPaperScissor(RockPaperScissors.Rock)
-        self.presentViewController(resultsController, animated: true, completion: nil)
+        let controller =  self.storyboard?.instantiateViewControllerWithIdentifier("results") as! ResultViewController
+        setResultForPlay(RockPaperScissors.Rock, controller: controller)
+        self.presentViewController(controller, animated: true, completion: nil)
     }
 
     /**
@@ -42,30 +42,38 @@ class ViewController: UIViewController {
     segues.
     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var playWith: RockPaperScissors?
         if segue.identifier == "paper" {
-            setResultForPlay(RockPaperScissors.Paper, segue: segue)
+            playWith = RockPaperScissors.Paper
         } else if segue.identifier == "scissors" {
-            setResultForPlay(RockPaperScissors.Scissors, segue: segue)
+            playWith = RockPaperScissors.Scissors
+        }
+        if let with = playWith {
+            let controller = segue.destinationViewController as! ResultViewController
+            setResultForPlay(with, controller: controller)
         }
     }
 
     /**
-    Sets the ResultViewController's resultImage text with the result of
+    Sets the ResultViewController's resultImage text and won boolean with the result of
     playRockPaperScissor(with).
     */
-    func setResultForPlay(with: RockPaperScissors, segue: UIStoryboardSegue) {
-        let controller = segue.destinationViewController as! ResultViewController
-        controller.resultImage = playRockPaperScissor(with)
+    func setResultForPlay(with: RockPaperScissors, controller: ResultViewController) {
+        let (result, won) = playRockPaperScissor(with)
+        controller.resultText = result
+        controller.won = won
     }
 
     /**
-    Returns a string that represents the game outcome.
+    Returns a tuple (``result``, ``playerWon``).
+
+    ``result`` is a string that represents the game outcome.
+    ``playerWon`` is a Bool indicating if player won.
     */
-    func playRockPaperScissor(with: RockPaperScissors) -> String {
+    func playRockPaperScissor(with: RockPaperScissors) -> (String, Bool?) {
         return RPS.resultForOptions(
             byPlayer: with,
             byComputer: RPS.randomOption()
         )
     }
-
 }

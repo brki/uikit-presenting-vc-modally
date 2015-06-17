@@ -75,15 +75,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="or3-zZ-ap6" userLabel="Result Image">
-                                <rect key="frame" x="225" y="165" width="150" height="150"/>
+                                <rect key="frame" x="225" y="105" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="AFx-17-W1d"/>
                                     <constraint firstAttribute="width" constant="150" id="JkM-aB-Iub"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fbx-GJ-9D8">
+                                <rect key="frame" x="0.0" y="285" width="600" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8Y-iy-CqJ" userLabel="ok">
-                                <rect key="frame" x="285" y="375" width="30" height="30"/>
-                                <state key="normal" title="OK">
+                                <rect key="frame" x="262" y="350.5" width="75" height="30"/>
+                                <state key="normal" title="Play again!">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -93,19 +99,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="or3-zZ-ap6" secondAttribute="centerY" constant="60" id="CX8-28-elp"/>
-                            <constraint firstItem="w8Y-iy-CqJ" firstAttribute="top" secondItem="or3-zZ-ap6" secondAttribute="bottom" constant="60" id="Msz-QB-NAI"/>
+                            <constraint firstAttribute="centerY" secondItem="or3-zZ-ap6" secondAttribute="centerY" constant="120" id="CX8-28-elp"/>
+                            <constraint firstAttribute="centerX" secondItem="Fbx-GJ-9D8" secondAttribute="centerX" id="K5A-Jg-iTS"/>
+                            <constraint firstItem="Fbx-GJ-9D8" firstAttribute="width" secondItem="k0G-jD-WT1" secondAttribute="width" id="Opi-Wh-FaH"/>
                             <constraint firstAttribute="centerX" secondItem="or3-zZ-ap6" secondAttribute="centerX" id="QM8-Ou-SNA"/>
+                            <constraint firstItem="w8Y-iy-CqJ" firstAttribute="top" secondItem="Fbx-GJ-9D8" secondAttribute="bottom" constant="45" id="d9w-fv-sQl"/>
+                            <constraint firstItem="Fbx-GJ-9D8" firstAttribute="top" secondItem="or3-zZ-ap6" secondAttribute="bottom" constant="30" id="f0u-qf-CDd"/>
                             <constraint firstItem="w8Y-iy-CqJ" firstAttribute="centerX" secondItem="or3-zZ-ap6" secondAttribute="centerX" id="yH4-YX-2Sj"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="resultImageView" destination="or3-zZ-ap6" id="3gc-uX-gQe"/>
+                        <outlet property="resultLabel" destination="Fbx-GJ-9D8" id="LsT-z2-2po"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5MA-G9-HmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="588" y="-98"/>
+            <point key="canvasLocation" x="580" y="-98"/>
         </scene>
     </scenes>
     <resources>

@@ -11,13 +11,36 @@ import UIKit
 class ResultViewController: UIViewController {
 
     @IBOutlet weak var resultImageView: UIImageView!
+    @IBOutlet weak var resultLabel: UILabel!
 
-    var resultImage: String?
+    var resultText: String?
+    var won: Bool?
 
     override func viewWillAppear(animated: Bool) {
-        if let img = resultImage {
-            resultImageView.image = UIImage(named: img)
+        if let result = resultText {
+            resultImageView.image = UIImage(named: result)
+
+            resultLabel.text = messageForResult(result, won: self.won)
         }
+    }
+
+    func messageForResult(result: String, won: Bool?) -> String {
+        var message: String
+        switch result {
+        case "rock-paper":
+            message = "Paper covers rock"
+        case "rock-scissors":
+            message = "Rock crushes scissors"
+        case "paper-scissors":
+            message = "Scissors cut paper"
+        default:
+            message = "It's a tie."
+        }
+
+        if let didWin = won {
+            message += didWin ? " - You win!" : " - You lose."
+        }
+        return message
     }
 
     @IBAction func dismiss(sender: UIButton) {
