@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,105 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="230" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0s3-DJ-gL3" userLabel="paper">
+                                <rect key="frame" x="277" y="128" width="75" height="65"/>
+                                <state key="normal" image="choose-paper">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="paper:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nCN-V7-M5A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="230" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="twX-aG-1ZG" userLabel="scissors">
+                                <rect key="frame" x="277" y="390" width="75" height="65"/>
+                                <state key="normal" image="choose-scissors">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="4hF-z4-fBY" kind="presentation" identifier="scissors" id="lcf-BP-Vqa"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="240" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1z-x6-weM" userLabel="rock">
+                                <rect key="frame" x="277" y="259" width="75" height="65"/>
+                                <state key="normal" image="choose-rock">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="rock:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R5U-5h-E0V"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H1z-x6-weM" firstAttribute="centerX" secondItem="twX-aG-1ZG" secondAttribute="centerX" id="AhU-1h-ueK"/>
+                            <constraint firstAttribute="centerY" secondItem="H1z-x6-weM" secondAttribute="centerY" constant="8.5" id="Jtv-hS-OTo"/>
+                            <constraint firstItem="twX-aG-1ZG" firstAttribute="top" secondItem="H1z-x6-weM" secondAttribute="bottom" priority="990" constant="66" id="LEz-XB-AhV"/>
+                            <constraint firstItem="H1z-x6-weM" firstAttribute="top" secondItem="0s3-DJ-gL3" secondAttribute="bottom" priority="990" constant="66" id="MNT-tC-r4F"/>
+                            <constraint firstItem="H1z-x6-weM" firstAttribute="centerX" secondItem="0s3-DJ-gL3" secondAttribute="centerX" id="asb-Ys-lAT"/>
+                            <constraint firstAttribute="centerX" secondItem="H1z-x6-weM" secondAttribute="centerX" constant="-14.5" id="r6B-if-HBI"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <segue destination="4hF-z4-fBY" kind="presentation" identifier="paper" id="5mW-lN-1PT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-130" y="-98"/>
+        </scene>
+        <!--Result View Controller-->
+        <scene sceneID="W3L-ow-6Tk">
+            <objects>
+                <viewController storyboardIdentifier="results" id="4hF-z4-fBY" customClass="ResultViewController" customModule="Roshambo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1jJ-d1-e5L"/>
+                        <viewControllerLayoutGuide type="bottom" id="aCh-Wz-P34"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="k0G-jD-WT1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="or3-zZ-ap6" userLabel="Result Image">
+                                <rect key="frame" x="225" y="165" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="AFx-17-W1d"/>
+                                    <constraint firstAttribute="width" constant="150" id="JkM-aB-Iub"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8Y-iy-CqJ" userLabel="ok">
+                                <rect key="frame" x="285" y="375" width="30" height="30"/>
+                                <state key="normal" title="OK">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="4hF-z4-fBY" eventType="touchUpInside" id="TYK-0S-OKG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="or3-zZ-ap6" secondAttribute="centerY" constant="60" id="CX8-28-elp"/>
+                            <constraint firstItem="w8Y-iy-CqJ" firstAttribute="top" secondItem="or3-zZ-ap6" secondAttribute="bottom" constant="60" id="Msz-QB-NAI"/>
+                            <constraint firstAttribute="centerX" secondItem="or3-zZ-ap6" secondAttribute="centerX" id="QM8-Ou-SNA"/>
+                            <constraint firstItem="w8Y-iy-CqJ" firstAttribute="centerX" secondItem="or3-zZ-ap6" secondAttribute="centerX" id="yH4-YX-2Sj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="resultImageView" destination="or3-zZ-ap6" id="3gc-uX-gQe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5MA-G9-HmS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="588" y="-98"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="choose-paper" width="75" height="65"/>
+        <image name="choose-rock" width="75" height="65"/>
+        <image name="choose-scissors" width="75" height="65"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="lcf-BP-Vqa"/>
+    </inferredMetricsTieBreakers>
 </document>
